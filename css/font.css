@@ -1,0 +1,29 @@
+.ttlf{
+    text-align: left;
+}
+.ttItem{
+    text-align: center;
+    font-weight: bold;
+    color:  rgb(21, 141, 211);  
+    margin: 2% 0% 0% 0%;
+}
+.ttPrize{
+    text-align: center;
+    color: #777;
+}
+.ttItemIntro{
+    text-align: left;
+    font-size: 0.92em;
+    color: #777;
+    /* margin: 10% 10% 10% 10%; */
+}
+
+.ttOrange{
+    color: rgb(231, 143, 91);
+}
+
+.redTag{
+    background-color:rgb(255, 123, 0);
+    color: rgb(255, 255, 255);
+    font-size: 0.8em;
+}
