@@ -2,7 +2,7 @@ $(function(){
     $(".ui-loader").hide(); //jQuery Mobile 引用 隱藏頁面底部出現的loading字樣
     
     var mainImgDiv_ar = [];    //主頁輪播圖形Div陣列
-    var mainImgTotle = 8;      //主頁輪播圖形數量
+    var mainImgTotle = 9;      //主頁輪播圖形數量
     var picWord = [];
     
     init();     //初始化
