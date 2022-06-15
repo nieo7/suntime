@@ -29,6 +29,24 @@ $(function(){
         }        
 
         picRotation(mainImgDiv_ar, mainImgTotle, 9000, nowImgNum);  //執行圖片輪播
+        
+        // emailjs.init("2XQYtvJj05QK3YYb5");
+        
+
+        // $("#logoPic").click(() => {
+        //     console.log("!!!55777777777777777!!!!!!!!!!!!!!!! emailjs.send(");
+        //     emailjs.send("service_uefgtqg","template_9pdvthj");
+        //     // Email.send({
+        //     //     SecureToken : "177a60e6-2309-4650-adeb-aa45ae5556e5",
+        //     //     To : 'suntimes17@gmail.com',
+        //     //     From : "suntimes18@gmail.com",
+        //     //     Subject : "This is the subject",
+        //     //     Body : "And this is the body"
+        //     // }).then(
+        //     //     message => alert(message)
+        //     // );
+        // });
+
     }
 
     function setPicWord()   {
@@ -54,7 +72,6 @@ $(function(){
             // console.log("目前 " + _now);
         }, _time);
     }
-   
 
     $("#mAbout").click(function(){
         $("pageHome").hide();
