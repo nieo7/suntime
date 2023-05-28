@@ -91,7 +91,25 @@ $(function(){
         $("pageAbout").hide();
         $("pageBrief").show();
     });
-  
-
+    
+    async function downloadXLSX() {
+        const response = await fetch("https://nieo7.github.io/suntime/form/purchase.xlsx");
+		const data = await response.arrayBuffer();
+        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+        // 使用 URL.createObjectURL() 方法創建 Blob 對象的 URL
+        const url = URL.createObjectURL(blob);
+        // 創建一個 <a> 元素，設置其 href         
+		const link = document.createElement('a');
+        link.href = url;
+        link.download = "有時貝果團購單.xlsx";
+        document.body.appendChild(link);
+        link.click();
+        // 釋放 Blob 對象的 URL
+        URL.revokeObjectURL(url);
+    }
+    
+    $('#downloadBtn').click(function() {
+        downloadXLSX();
+    });
     
 });
