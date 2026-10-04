@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>suntime 有時貝果｜日本麥香・天然酵母・手作貝果</title>
+<meta name="description" content="suntime 有時貝果 | 以兩種日本小麥粉、天然酵母、法國發酵奶油誠意手作，經過90℃熱水浴與烘烤，軟Q帶著嚼勁。線上訂購，冷凍宅配台灣本島。">
+
+<!-- 分享到 LINE / FB 時的預覽 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="suntime 有時貝果">
+<meta property="og:description" content="日本麥香、天然酵母，每一顆都是手作。線上訂購，冷凍宅配台灣本島。">
+<meta property="og:image" content="https://nieo7.github.io/suntime/img/mainImg_1.jpg">
+<meta property="og:url" content="https://nieo7.github.io/suntime/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --orange: #ef7a1a;        /* logo 太陽橘 */
+    --orange-dark: #c95f0c;
+    --cream: #fbf6ee;         /* 奶油白底 */
+    --paper: #ffffff;
+    --crust: #6b4226;         /* 麵包棕 */
+    --ink: #3a2a1e;
+    --muted: #8a7462;
+    --line: #eadfce;
+    --radius: 18px;
+    --shadow: 0 6px 24px rgba(107, 66, 38, .10);
+    --serif: "Noto Serif TC", serif;
+    --sans: "Noto Sans TC", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+  body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- 按鈕 ---------- */
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: .4em; padding: .8em 1.6em; border-radius: 999px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: transform .15s, background .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--orange); color: #fff; box-shadow: 0 6px 16px rgba(239, 122, 26, .35); }
+  .btn-primary:hover { background: var(--orange-dark); }
+  .btn-ghost { border: 1.5px solid var(--crust); color: var(--crust); }
+
+  /* ---------- 頁首 ---------- */
+  header { position: sticky; top: 0; z-index: 20; background: rgba(251, 246, 238, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 16px; }
+  header .logo img { height: 40px; width: auto; }
+  nav { display: flex; align-items: center; gap: 22px; font-size: .95rem; }
+  nav a { text-decoration: none; color: var(--crust); font-weight: 500; }
+  nav a:not(.btn):hover { color: var(--orange); }
+  nav .btn { padding: .5em 1.2em; font-size: .95rem; }
+
+  /* ---------- 主視覺 ---------- */
+  .hero { padding: 56px 0 40px; }
+  .hero .wrap { display: grid; grid-template-columns: 1fr 1.15fr; gap: 48px; align-items: center; }
+  .eyebrow { color: var(--orange); font-weight: 700; letter-spacing: .15em; font-size: .9rem; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2rem, 4.2vw, 3.1rem); line-height: 1.35; margin: .3em 0 .5em; color: var(--crust); }
+  .hero p { color: var(--muted); font-size: 1.05rem; margin: 0 0 1.8em; }
+  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-img { border-radius: 28px; overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 4 / 3; background: var(--line); }
+  .hero-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* ---------- 區塊共用 ---------- */
+  section { padding: 72px 0; }
+  .sec-head { text-align: center; margin-bottom: 40px; }
+  .sec-head .eyebrow { display: block; margin-bottom: 6px; }
+  .sec-head h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--crust); margin: 0; }
+  .sec-head p { color: var(--muted); margin: 10px auto 0; max-width: 560px; }
+  .alt { background: var(--paper); }
+
+  /* ---------- 特色 ---------- */
+  .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .feature { background: var(--paper); border-radius: var(--radius); padding: 28px 22px; text-align: center; box-shadow: var(--shadow); }
+  .feature .icon { font-size: 2rem; line-height: 1; }
+  .feature h3 { font-family: var(--serif); color: var(--crust); margin: 12px 0 6px; font-size: 1.15rem; }
+  .feature p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* ---------- 品牌故事 ---------- */
+  .story { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .story img { border-radius: var(--radius); box-shadow: var(--shadow); aspect-ratio: 1 / 1; object-fit: cover; width: 100%; }
+  .story h2 { font-family: var(--serif); color: var(--crust); font-size: clamp(1.5rem, 2.8vw, 2rem); margin: .2em 0 .6em; }
+  .story p { margin: 0 0 1em; }
+
+  /* ---------- 菜單 ---------- */
+  .menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .card { background: var(--paper); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .card .pic { aspect-ratio: 1 / 1; background: var(--line); }
+  .card .pic img { width: 100%; height: 100%; object-fit: cover; }
+  .card .body { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .card .top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .card h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0; color: var(--crust); }
+  .card .price { color: var(--orange); font-weight: 700; white-space: nowrap; }
+  .card p { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.7; }
+  .menu-state { text-align: center; color: var(--muted); padding: 24px; grid-column: 1 / -1; }
+  .menu-cta { text-align: center; margin-top: 40px; }
+
+  /* ---------- 訂購方式 ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; }
+  .step { background: var(--cream); border-radius: var(--radius); padding: 28px 24px; position: relative; }
+  .step::before { counter-increment: step; content: counter(step); position: absolute; top: -16px; left: 24px; width: 36px; height: 36px; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; display: grid; place-items: center; }
+  .step h3 { font-family: var(--serif); color: var(--crust); margin: 6px 0 6px; font-size: 1.1rem; }
+  .step p { margin: 0; color: var(--muted); font-size: .95rem; }
+  .shipping { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  .ship { border: 1.5px dashed var(--line); border-radius: var(--radius); padding: 20px 24px; }
+  .ship strong { color: var(--crust); font-family: var(--serif); font-size: 1.05rem; }
+  .ship p { margin: 4px 0 0; color: var(--muted); }
+
+  /* ---------- 保存加熱 ---------- */
+  .care { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .care-box { background: var(--paper); border-radius: var(--radius); padding: 24px 26px; box-shadow: var(--shadow); }
+  .care-box h3 { font-family: var(--serif); color: var(--crust); margin: 0 0 10px; font-size: 1.15rem; }
+  .care-box ul { margin: 0; padding-left: 1.2em; }
+  .care-box li { margin: 2px 0; }
+  .care-box .tag { display: inline-block; font-size: .8rem; color: var(--orange-dark); background: #fdebd9; padding: 0 .6em; border-radius: 6px; margin-right: 4px; }
+  details { border-top: 1px solid var(--line); padding: 10px 0; }
+  details:first-of-type { border-top: 0; }
+  summary { cursor: pointer; font-weight: 700; color: var(--crust); list-style: none; display: flex; justify-content: space-between; }
+  summary::-webkit-details-marker { display: none; }
+  summary::after { content: "＋"; color: var(--orange); }
+  details[open] summary::after { content: "－"; }
+  details ul { margin-top: 6px; color: var(--ink); }
+
+  /* ---------- 聯絡 ---------- */
+  .contact { display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 20px; align-items: stretch; }
+  .contact a.box, .contact .box { background: var(--paper); border-radius: var(--radius); padding: 24px; text-align: center; text-decoration: none; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
+  .contact img { width: 120px; height: 120px; object-fit: contain; }
+  .contact .box strong { color: var(--crust); font-family: var(--serif); font-size: 1.1rem; }
+  .contact .box span { color: var(--muted); font-size: .92rem; }
+
+  footer { text-align: center; padding: 32px 0 96px; color: var(--muted); font-size: .9rem; }
+  footer img { height: 34px; width: auto; margin: 0 auto 8px; opacity: .85; }
+
+  /* 手機底部固定訂購鈕 */
+  .float-order { display: none; }
+
+  /* ---------- 手機 ---------- */
+  @media (max-width: 860px) {
+    nav a:not(.btn) { display: none; }
+    .hero { padding-top: 28px; }
+    .hero .wrap, .story { grid-template-columns: 1fr; gap: 28px; }
+    .hero-img { order: -1; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .steps, .shipping, .care, .contact { grid-template-columns: 1fr; }
+    .steps { gap: 28px; }
+    section { padding: 56px 0; }
+    .float-order { display: flex; position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 30; }
+    .float-order .btn { width: 100%; padding: 1em; }
+  }
+  @media (max-width: 420px) {
+    .features { grid-template-columns: 1fr; }
+    .menu { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .card .body { padding: 12px; }
+    .card .top { flex-direction: column; gap: 0; }
+    .card p { display: none; }  /* 窄螢幕兩欄時只秀品名與價格 */
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="img/sunlogo.png" alt="suntime 有時貝果"></a>
+    <nav>
+      <a href="#menu">貝果菜單</a>
+      <a href="#how">訂購方式</a>
+      <a href="#care">保存加熱</a>
+      <a href="#contact">聯絡我們</a>
+      <a class="btn btn-primary" href="https://sunorder.netlify.app/" target="_blank" rel="noopener">線上訂購</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 主視覺 -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">HANDMADE BAGELS</span>
+        <h1>日本麥香、天然酵母，<br>每一顆都是手作。</h1>
+        <p>軟Q帶著些許嚼勁，少油少糖的健康選擇。<br>以讓家人安心食的心念，誠意手作每一顆貝果。</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://sunorder.netlify.app/" target="_blank" rel="noopener">立即訂購</a>
+          <a class="btn btn-ghost" href="#menu">看看貝果菜單</a>
+        </div>
+      </div>
+      <div class="hero-img"><img id="heroImg" src="img/mainImg_1.jpg" alt="有時貝果"></div>
+    </div>
+  </div>
+
+  <!-- 特色 -->
+  <section style="padding-top:24px">
+    <div class="wrap features">
+      <div class="feature"><div class="icon">🌾</div><h3>日本小麥粉</h3><p>兩種日本小麥粉調配，獨特的麥香</p></div>
+      <div class="feature"><div class="icon">🫙</div><h3>天然酵母</h3><p>三溫糖、海鹽、法國發酵奶油，靜靜等待發酵</p></div>
+      <div class="feature"><div class="icon">♨️</div><h3>90℃ 熱水浴</h3><p>燙麵後再烘烤，成就軟Q又有嚼勁的口感</p></div>
+      <div class="feature"><div class="icon">💛</div><h3>少油少糖</h3><p>比麵包更清爽，喜愛麥香的你更健康的選擇</p></div>
+    </div>
+  </section>
+
+  <!-- 品牌故事 -->
+  <section class="alt">
+    <div class="wrap story">
+      <img src="img/mainImg_4.jpg" alt="手作貝果" loading="lazy">
+      <div>
+        <span class="eyebrow">OUR STORY</span>
+        <h2>在烘焙的小天地裡，<br>希望溫暖貼近生活</h2>
+        <p>以兩種日本小麥粉獨特的麥香，調配貝果麵糰，加上天然酵母、三溫糖、海鹽、法國發酵奶油；揉入味蕾的記憶，給予麵糰適當的水分及剛好的溫度，靜靜等待小麥與酵母的作用。</p>
+        <p>再來，給貝果們 90℃ 的熱水浴，經過烘烤，一顆顆有時貝果呈現了！軟Q帶著些許嚼勁，驚喜的口感傳遞幸福的滋味。</p>
+        <p>以讓家人安心食的心念手作貝果，希望你會喜歡！</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 菜單（即時讀取訂購系統的 bagels 表，價格與訂購頁一致） -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">MENU</span>
+        <h2>有時貝果菜單</h2>
+        <p>每一款都是用心手作，價格以線上訂購頁為準</p>
+      </div>
+      <div class="menu" id="menuGrid"><div class="menu-state">菜單載入中…</div></div>
+      <div class="menu-cta"><a class="btn btn-primary" href="https://sunorder.netlify.app/" target="_blank" rel="noopener">挑好了，去訂購</a></div>
+    </div>
+  </section>
+
+  <!-- 訂購方式 -->
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">HOW TO ORDER</span>
+        <h2>訂購方式</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>線上選購</h3><p>進入線上訂購頁，選擇品項數量並填寫收件資料。</p></div>
+        <div class="step"><h3>收到訂購通知</h3><p>送出後會顯示訂單編號，並寄送訂購通知信給您。</p></div>
+        <div class="step"><h3>確認後出貨</h3><p>我們會與您聯絡確認時間，確認無誤並收到匯款後，於 2～5 天內出貨。</p></div>
+      </div>
+      <div class="shipping">
+        <div class="ship"><strong>🚚 冷凍宅配（台灣本島）</strong><p>運費 NT$160，訂購滿 NT$2,000 免運費。</p></div>
+        <div class="ship"><strong>🏠 高雄市區</strong><p>訂購滿 NT$1,500，可免費常溫送貨（請於三日前訂購）。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 保存加熱 -->
+  <section id="care">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">HOW TO ENJOY</span>
+        <h2>保存與加熱</h2>
+        <p>照著做，在家也能吃到剛出爐般的口感</p>
+      </div>
+      <div class="care">
+        <div class="care-box">
+          <h3>保存</h3>
+          <ul>
+            <li><span class="tag">常溫貝果</span>當天未食用，建議冷藏或冷凍。</li>
+            <li><span class="tag">宅配冷凍貝果</span>皆以冷凍保存！</li>
+          </ul>
+          <h3 style="margin-top:20px">解凍</h3>
+          <ul>
+            <li>前一晚放到冰箱冷藏室退冰。</li>
+            <li>室溫退冰約 40 分鐘。</li>
+          </ul>
+        </div>
+        <div class="care-box">
+          <h3>加熱 <small style="font-family:var(--sans);font-size:.85rem;color:var(--muted);font-weight:400">常溫或冷藏退冰貝果</small></h3>
+          <details open>
+            <summary>烤箱</summary>
+            <ul><li>預熱烤箱 180℃ 5 分鐘，貝果表面噴水，放進烤箱 3～4 分鐘。</li></ul>
+          </details>
+          <details>
+            <summary>氣炸鍋</summary>
+            <ul>
+              <li>200℃ 免預熱，加熱 1 分 30 秒～2 分鐘。</li>
+              <li>預熱 180℃，加熱 1 分 30 秒～2 分鐘。</li>
+              <li>冷凍直接加熱：預熱 160℃ 後直接烤 6 分鐘。</li>
+            </ul>
+          </details>
+          <details>
+            <summary>微波爐</summary>
+            <ul><li>貝果表面噴水，加熱 20～30 秒。</li></ul>
+          </details>
+          <details>
+            <summary>電鍋</summary>
+            <ul>
+              <li>只要 10cc 的水，電鍋跳起即可取出食用。</li>
+              <li>冷凍直接加熱：貝果不需解凍，加入 50cc 的水，電源跳起 7～10 分鐘後取出。</li>
+            </ul>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡 / 團購 -->
+  <section id="contact" class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">CONTACT</span>
+        <h2>聯絡我們</h2>
+      </div>
+      <div class="contact">
+        <a class="box" href="https://www.facebook.com/suntime17" target="_blank" rel="noopener">
+          <img src="img/qrFb.jpg" alt="Facebook QR code" loading="lazy">
+          <strong>Facebook 粉絲專頁</strong><span>@suntime17</span>
+        </a>
+        <a class="box" href="http://line.me/ti/p/@oab1530d" target="_blank" rel="noopener">
+          <img src="img/line@800.png" alt="LINE QR code" loading="lazy">
+          <strong>LINE 官方帳號</strong><span>ID：@oab1530d</span>
+        </a>
+        <div class="box">
+          <div style="font-size:2.4rem;line-height:1">🥯</div>
+          <strong>團購需求</strong>
+          <span>有團購需求，請透過 LINE 或 FB 粉絲專頁與我們聯繫。</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img src="img/sunlogo.png" alt="suntime 有時貝果">
+  suntime 有時貝果 © <span id="year">2026</span> All Rights Reserved
+</footer>
+
+<div class="float-order"><a class="btn btn-primary" href="https://sunorder.netlify.app/" target="_blank" rel="noopener">線上訂購</a></div>
+
+<script>
+  // 主視覺隨機換一張（沿用原網站的 9 張主圖）
+  document.getElementById('heroImg').src = 'img/mainImg_' + Math.floor(Math.random() * 9) + '.jpg';
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // 菜單：直接讀訂購系統的 bagels 表（公開唯讀），在後台改價或上下架會自動同步
+  const SUPABASE_URL = 'https://krfrlpmgpfdntaqlyjyq.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_Pg8T2D8pc-kkKIDD7hF6UA_5qRDGGsS';
+  const grid = document.getElementById('menuGrid');
+
+  function el(tag, cls, text) {
+    const e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text != null) e.textContent = text;
+    return e;
+  }
+
+  fetch(SUPABASE_URL + '/rest/v1/bagels?select=name,price,description,image_url&is_active=eq.true&order=sort_order',
+        { headers: { apikey: SUPABASE_KEY } })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (list) {
+      grid.innerHTML = '';
+      if (!list.length) { grid.appendChild(el('div', 'menu-state', '目前沒有上架的貝果，請稍後再來看看。')); return; }
+      list.forEach(function (b) {
+        const card = el('div', 'card');
+        const pic = el('div', 'pic');
+        if (b.image_url) {
+          const img = el('img');
+          img.src = b.image_url; img.alt = b.name; img.loading = 'lazy';
+          pic.appendChild(img);
+        }
+        const body = el('div', 'body');
+        const top = el('div', 'top');
+        top.appendChild(el('h3', null, b.name));
+        top.appendChild(el('span', 'price', 'NT$ ' + b.price));
+        body.appendChild(top);
+        if (b.description) body.appendChild(el('p', null, b.description));
+        card.appendChild(pic); card.appendChild(body);
+        grid.appendChild(card);
+      });
+    })
+    .catch(function () {
+      grid.innerHTML = '';
+      const s = el('div', 'menu-state');
+      s.append('菜單暫時無法載入，請直接前往 ');
+      const a = el('a', null, '線上訂購頁'); a.href = 'https://sunorder.netlify.app/'; a.target = '_blank';
+      s.append(a, ' 查看。');
+      grid.appendChild(s);
+    });
+</script>
+</body>
+</html>
