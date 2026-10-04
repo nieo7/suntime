@@ -1,17 +1,31 @@
 name: Supabase Keep-Alive
 
 # 每天對資料庫做一次真實查詢，避免免費方案連續 7 天無活動而暫停。
+#
+# 注意：GitHub 對「公開 repo 連續 60 天沒有 commit」會自動停用排程（disabled_inactivity）。
+# 2026-08 就是因此停掉，導致 Supabase 被暫停。下面第一步每次執行都呼叫 API 重新啟用自己，
+# 藉此重設 60 天計時，不必再定期手動 commit。
 on:
   schedule:
     - cron: '17 2 * * *'   # 每天 UTC 02:17（台灣時間 10:17）執行一次
   workflow_dispatch: {}     # 也可在 Actions 頁面手動觸發測試
 
+permissions:
+  actions: write            # 重新啟用排程需要
+  contents: read
+
 jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
+      - name: 重新啟用本排程（重設 GitHub 60 天無活動計時）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/supabase-keepalive.yml/enable"
+
       - name: Ping Supabase REST（會實際查到資料庫）
+        # -f：非 2xx 視為失敗 → 執行顯示紅色，GitHub 會寄失敗通知信，可及早發現專案異常
         run: |
-          curl -sS -o /dev/null -w "HTTP %{http_code}\n" \
+          curl -fsS --retry 3 --retry-delay 30 -o /dev/null -w "HTTP %{http_code}\n" \
             "https://krfrlpmgpfdntaqlyjyq.supabase.co/rest/v1/bagels?select=id&limit=1" \
             -H "apikey: sb_publishable_Pg8T2D8pc-kkKIDD7hF6UA_5qRDGGsS"
